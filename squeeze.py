@@ -1,12 +1,12 @@
-from first import style
-from second import parse
+from first import parse
+from second import style
 from third import excess
 from fourth import attachment
 from fifth import additionally
 from sixth import literacy
 
-text=input()
-#type=style(text)
-mas=literacy(additionally(attachment(excess(parse(text)))))
+mas=parse(input())
+#type=style(mas)
+mas=literacy(additionally(attachment(excess(mas))))
 #<Превращаем массив в текст> mas->text
 print(mas)
