@@ -1,5 +1,5 @@
-from style import style
-from parse import parse
+from first import style
+from second import parse
 
 text=input()
 type=style(text)
