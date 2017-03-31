@@ -1,12 +1,14 @@
-from first import parse
-from second import style
-from third import excess
-from fourth import attachment
-from fifth import additionally
-from sixth import literacy
+from parse import parse
+from style import style
+from excess import excess
+from attachment import attachment
+from additionally import additionally
+from literacy import literacy
 
 mas=parse(input())
 #type=style(mas)
 mas=literacy(additionally(attachment(excess(mas))))
 #<Превращаем массив в текст> mas->text
-print(mas)
+for i in mas:
+	for j in i.word:
+		print(j['orig'])
