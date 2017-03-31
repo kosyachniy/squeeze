@@ -10,5 +10,7 @@ mas=parse(input())
 mas=literacy(additionally(attachment(excess(mas))))
 #<Превращаем массив в текст> mas->text
 for i in mas:
+	print(i.number,end=' ')
 	for j in i.word:
-		print(j['orig'])
+		print(j['number'],' ',j['orig'],end=' ')
+	print()
