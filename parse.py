@@ -3,14 +3,14 @@
 import re
 signs=('.','!','?')
 def parse(text):
-	text=re.sub(r'([.,!?])',r' \1 ',text).split()
+	text=re.sub(r'([.,!?"/():;&\'])',r' \1 ',text).split()
 	class sentence:
 		word=[]
 		number=1
 	num=0
 	mas=[sentence()]
 	for i in range(len(text)):
-		mas[num].word.append({'orig':text[i],'sentence':num+1})
+		mas[num].word.append({'original':text[i],'change':text[i],'number':num+1,'speech':'','sentence':''})
 		if (text[i] in signs) and (i!=len(text)-1):
 			num+=1
 			mas.append(sentence())
@@ -18,4 +18,10 @@ def parse(text):
 			mas[num].number=num+1
 	return mas
 
+#mas[i].word[j]['...']
+#original - Начальное слово
+#change - Замена
+#number - Номер предложения
+#speech - Часть речи
+#sentence - Часть предложения
 #!? ?! !" ?"

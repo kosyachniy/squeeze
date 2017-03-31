@@ -12,5 +12,5 @@ mas=literacy(additionally(attachment(excess(mas))))
 for i in mas:
 	print(i.number,end=' ')
 	for j in i.word:
-		print(j['orig'],end=' ')
+		print(j['change'],end=' ')
 	print()
