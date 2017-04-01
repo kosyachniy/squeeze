@@ -40,12 +40,11 @@ def parse(str):
 	for i in text:
 		if i.speech!='signs':
 			p=(morph.parse(i.cont)[0]).tag
-			print(p)
+			#print(p)
 			i.speech=p.POS
 			i.gender=p.gender
 			i.case=p.case
 			i.number=p.number
-			print(i.speech,i.case,i.number,i.gender)
 #			cmd='echo "'+i.cont+'" | '+os.getcwd()+'/mystem -i'
 #			PIPE=subprocess.PIPE
 #			p=subprocess.Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE,
