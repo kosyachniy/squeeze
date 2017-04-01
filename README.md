@@ -20,3 +20,10 @@
 6 (literacy.py) - Проверка грамотности и логичности. Изменение логических связей между словами;
 
 7 - Дополнение информацией из других источников.
+
+Настройка
+-----
+pip3 install pymorphy2
+pip3 install -U pymorphy2-dicts-ru
+#pip install -U pymorphy2-dicts-uk
+#>>>morph=pymorphy2.MorphAnalyzer(lang='uk')
