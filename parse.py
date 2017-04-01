@@ -39,7 +39,13 @@ def parse(str):
 	morph=MorphAnalyzer()
 	for i in text:
 		if i.speech!='signs':
-			i.speech=(morph.parse(i.cont)[0]).tag.POS
+			p=(morph.parse(i.cont)[0]).tag
+			print(p)
+			i.speech=p.POS
+			i.gender=p.gender
+			i.case=p.case
+			i.number=p.number
+			print(i.speech,i.case,i.number,i.gender)
 #			cmd='echo "'+i.cont+'" | '+os.getcwd()+'/mystem -i'
 #			PIPE=subprocess.PIPE
 #			p=subprocess.Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE,
@@ -52,18 +58,10 @@ def parse(str):
 	num=0
 	mas=[sentence()]
 	for i in range(len(text)):
-		mas[num].word.append({'original':text[i].cont,'change':text[i].cont,'number':num+1,'speech':text[i].speech,'sentence':text[i].sentence})
+		mas[num].word.append({'original':text[i].cont,'change':text[i].cont,'numsp':num+1,'speech':text[i].speech,'sentence':text[i].sentence,'case':text[i].case,'number':text[i].number,'gender':text[i].gender})
 		if sign(text[i].cont) and (i!=len(text)-1):
 			num+=1
 			mas.append(sentence())
 			mas[num].word=[]
 			mas[num].number=num+1
 	return mas
-
-#mas[i].word[j]['...']
-#original - Начальное слово
-#change - Замена
-#number - Номер предложения
-#speech - Часть речи
-#sentence - Часть предложения
-#!? ?! !" ?"

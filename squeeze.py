@@ -5,11 +5,11 @@ from attachment import attachment
 from additionally import additionally
 from literacy import literacy
 
-list=parse(input())
+mas=parse(input())
 #type=style(mas)
-list=literacy(additionally(attachment(excess(list))))
+mas=literacy(additionally(attachment(excess(mas))))
 #<Превращаем массив в текст> mas->text
-for i in list:
+for i in mas:
 	print(i.number,end=' ')
 	for j in i.word:
 		print(j['change'],'(',j['speech'],')',end=' ')
