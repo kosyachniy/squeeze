@@ -48,14 +48,10 @@ def parse(str):
 				t=True
 		else:
 #Определение граммем (части речи, падежа, рода, числа, ...)
-<<<<<<< HEAD
 			if any(c in '0123456789' for c in str[i]):
 				text.append(word(str[i],'num'))
 			else:
 				text.append(word(str[i],morph(str[i])[0],morph(str[i])[1],morph(str[i])[2],morph(str[i])[3]))
-=======
-			text.append(word(str[i],morph(str[i])[0],morph(str[i])[1],morph(str[i])[2],morph(str[i])[3]))
->>>>>>> bfebbe3865cff991cfb9e3dfee172c3c384b9bd5
 			t=False
 
 #Объединение слов в предложения
