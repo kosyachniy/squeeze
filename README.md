@@ -46,6 +46,8 @@ mas[i].word[j]['number'] - число
 
 mas[i].word[j]['gender'] - род
 
+mas[i].word[j]['language'] - язык оригинала
+
 mas[i].word[j]['numsp'] - номер предложения в тексте
 
 ### Части речи
@@ -94,13 +96,24 @@ gen2 | Второй родительный (Частичный) |  | ложка 
 acc2 | Второй винительный |  | записался в солдаты
 loc2 | Второй предложный (Местный) |  | я у него в долгу (loct - напоминать о долге); висит в шкафу (loct - монолог о шкафе); весь в снегу (loct - писать о снеге)
 
+### Язык
+
+Граммема | Значение
+---------|---------
+ru | Русский
+en | English
+
+[Полный список (639-1 коды)](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+
 Настройка
 -----
 
+```
+pip3 install langdetect
 pip3 install pymorphy2
-
 pip3 install -U pymorphy2-dicts-ru
-
-#pip install -U pymorphy2-dicts-uk
-
-#>>>morph=pymorphy2.MorphAnalyzer(lang='uk')
+#pip3 install -U pymorphy2-dicts-uk
+```
+```python
+#m=MorphAnalyzer(lang='uk')
+```
