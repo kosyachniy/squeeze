@@ -9,7 +9,7 @@ m=MorphAnalyzer()
 
 def convert(item):
 	if item:
-		return item[0:4]
+		return item[0:4].lower()
 	else:
 		return ''
 
@@ -44,12 +44,12 @@ def parse(str):
 			if t:
 				text[len(text)-1].cont+=str[i]
 			else:
-				text.append(word(str[i],'signs'))
+				text.append(word(str[i],'sign'))
 				t=True
 		else:
 #Определение граммем (части речи, падежа, рода, числа, ...)
 			if any(c in '0123456789' for c in str[i]):
-				text.append(word(str[i],'num'))
+				text.append(word(str[i],'numb'))
 			else:
 				text.append(word(str[i],morph(str[i])[0],morph(str[i])[1],morph(str[i])[2],morph(str[i])[3]))
 			t=False
@@ -80,13 +80,13 @@ def parse(str):
 	if t:
 		for i in mas:
 			for j in i.word:
-				if j['speech'] in ('VERB','INFN'):
+				if j['speech'] in ('verb','infn'):
 					j['sentence']='predicate'
 #	Если предложение из одного слова???
 	for i in mas:
 		if i.count==1:
 			for j in i.word:
-				if j['speech'] in ('VERB','INFN'):
+				if j['speech'] in ('verb','infn'):
 					j['sentence']='predicate'
 
 	return mas
