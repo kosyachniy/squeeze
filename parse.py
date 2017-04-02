@@ -6,7 +6,7 @@ import re
 import os
 
 def parse(str):
-#Разбиение на слова и объединение знаков
+#Разбиение на слова
 	str=re.sub(r'([.,!?"/():;&\'])',r' \1 ',str).split()
 	class word:
 		def __init__(self,cont=''):
@@ -21,6 +21,8 @@ def parse(str):
 		text.append(word(str[i]))
 		if text[i].cont in ',.!?\'":;()/&':
 			text[i].speech='signs'
+
+#Объединение знаков
 	i=0
 	while i<=len(text)-2:
 		if (text[i].speech=='signs') and (text[i+1].speech=='signs'):
@@ -48,7 +50,7 @@ def parse(str):
 #			stderr=subprocess.STDOUT, close_fds=True, cwd='/home/')
 #			print(bytes(p.stdout.read()).decode('utf8'))
 
-#Разбиение на предложения
+#Объединение слов в предложения
 	class sentence:
 		def __init__(self,number=1):
 			self.word=[]
