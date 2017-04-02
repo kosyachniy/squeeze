@@ -4,30 +4,31 @@
 from pymorphy2 import MorphAnalyzer
 import re
 import os
+signs=',.!?\'":;/&'
 
 def parse(str):
-#Разбиение на слова и объединение знаков
-	str=re.sub(r'([.,!?"/():;&\'])',r' \1 ',str).split()
+#Разбиение текста на слова и объединение знаков
+	str=re.sub(r'(['+signs+'()<>\[\]])',r' \1 ',str).split()
 	class word:
-		def __init__(self,cont=''):
+		def __init__(self,cont='',speech=''):
 			self.cont=cont
-			self.speech=''
+			self.speech=speech
 			self.sentence=''
 			self.case=''
 			self.number=''
 			self.gender=''
 	text=[]
+	t=False
 	for i in range(len(str)):
-		text.append(word(str[i]))
-		if text[i].cont in ',.!?\'":;()/&':
-			text[i].speech='signs'
-	i=0
-	while i<=len(text)-2:
-		if (text[i].speech=='signs') and (text[i+1].speech=='signs'):
-			text[i].cont+=text[i+1].cont
-			del text[i+1]
+		if str[i] in signs:
+			if t:
+				text[len(text)-1].cont+=str[i]
+			else:
+				text.append(word(str[i],'signs'))
+				t=True
 		else:
-			i+=1
+			text.append(word(str[i]))
+			t=False
 
 #Определение граммем (части речи, падежа, рода, числа, ...)
 #	MongoDB
@@ -48,7 +49,7 @@ def parse(str):
 #			stderr=subprocess.STDOUT, close_fds=True, cwd='/home/')
 #			print(bytes(p.stdout.read()).decode('utf8'))
 
-#Разбиение на предложения
+#Объединение слов в предложения
 	class sentence:
 		def __init__(self,number=1):
 			self.word=[]
