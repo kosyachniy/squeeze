@@ -63,7 +63,7 @@ def parse(str):
 	num=0
 	mas=[sentence()]
 	for i in range(len(text)):
-		if text[i].speech!='signs':
+		if text[i].speech!='sign':
 			mas[num].count+=1
 		mas[num].word.append({'original':text[i].cont,'change':text[i].cont,'numsp':num+1,'speech':text[i].speech,'sentence':text[i].sentence,'case':text[i].case,'number':text[i].number,'gender':text[i].gender})
 		if any(c in '.!?' for c in text[i].cont) and (i!=len(text)-1):
