@@ -104,13 +104,3 @@ ru | Русский
 en | English
 
 [Полный список (639-1 коды)](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
-
-Настройка
------
-
-```
-pip3 install langdetect
-pip3 install pymorphy2
-pip3 install -U pymorphy2-dicts-ru
-pip3 install -U pymorphy2-dicts-uk
-```
