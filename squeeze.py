@@ -20,10 +20,12 @@ text=''
 t=False
 for i in mas:
 	for j in i.word:
-		if (j['speech']!='sign') and t:
+		if (j['change'] in '([{<') and t:
+			text+=' '
+			t=False
+		elif (j['speech']!='sign') and t:
 			text+=' '
 		else:
 			t=True
 		text+=j['change']
 print(text)
-#print(j['change']+' ' for j in i.word for i in mas)

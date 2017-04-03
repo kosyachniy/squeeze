@@ -4,6 +4,7 @@ from pymorphy2 import MorphAnalyzer
 from re import sub
 #from langdetect import detect
 signs=',.!?\'":;/&\\*|+=`'
+allsigns=signs+'()<>\[\]\{\}'
 m=MorphAnalyzer()
 #m=MorphAnalyzer(lang='uk')
 
@@ -29,7 +30,7 @@ def morph(text):
 
 def parse(str):
 #Разбиение текста на слова
-	str=sub(r'(['+signs+'()<>\[\]])',r' \1 ',str).split()
+	str=sub(r'(['+allsigns+'])',r' \1 ',str).split()
 	class word:
 		def __init__(self,cont='',speech='',gender='',case='',number='',language=''):
 			self.cont=cont
@@ -49,6 +50,8 @@ def parse(str):
 			else:
 				text.append(word(i,'sign'))
 				t=True
+		elif i in allsigns:
+				text.append(word(i,'sign'))
 		else:
 #Определение граммем (части речи, падежа, рода, числа, ...)
 			if any(c in '0123456789' for c in i):
