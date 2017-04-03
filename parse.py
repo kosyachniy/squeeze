@@ -5,6 +5,7 @@ from re import sub
 #from langdetect import detect
 signs=',.!?\'":;/&\\*|+=`'
 m=MorphAnalyzer()
+#m=MorphAnalyzer(lang='uk')
 
 def convert(item):
 	if item:

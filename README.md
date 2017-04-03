@@ -112,8 +112,5 @@ en | English
 pip3 install langdetect
 pip3 install pymorphy2
 pip3 install -U pymorphy2-dicts-ru
-#pip3 install -U pymorphy2-dicts-uk
-```
-```python
-#m=MorphAnalyzer(lang='uk')
+pip3 install -U pymorphy2-dicts-uk
 ```
