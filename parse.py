@@ -3,8 +3,8 @@
 from pymorphy2 import MorphAnalyzer
 from re import sub
 #from langdetect import detect
-signs=',.!?\'":;/&\\*|+=`'
-allsigns=signs+'()<>\[\]\{\}'
+signs='.!?\'":&*+=`'
+allsigns=signs+',;|/\\()<>\[\]\{\}'
 m=MorphAnalyzer()
 #m=MorphAnalyzer(lang='uk')
 
@@ -50,12 +50,12 @@ def parse(str):
 			else:
 				text.append(word(i,'sign'))
 				t=True
-		elif i in allsigns:
-				text.append(word(i,'sign'))
 		else:
-#Определение граммем (части речи, падежа, рода, числа, ...)
-			if any(c in '0123456789' for c in i):
+			if i in allsigns:
+				text.append(word(i,'sign'))
+			elif any(c in '0123456789' for c in i):
 				text.append(word(i,'numb'))
+#Определение граммем (части речи, падежа, рода, числа, ...)
 			else:
 				text.append(word(i,morph(i)[0],morph(i)[1],morph(i)[2],morph(i)[3])) #,detect(i)
 			t=False
