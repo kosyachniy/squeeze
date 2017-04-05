@@ -15,7 +15,7 @@ def assembly(mas):
 				t=False
 			elif (j['speech']!='sign') and t:
 				text+=' '
-			else:
+			elif (j['change']!=''):
 				t=True
 			text+=j['change']
 	return text
@@ -28,7 +28,7 @@ print()
 for i in mas:
 	print(i.number,end=' ')
 	for j in i.word:
-		print(j['change'],'(',j['speech'],'-',j['sentence'],')',end=' ')
+		print(j['original'],'(',j['speech'],'-',j['sentence'],')',end=' ')
 	print()
 print()
 print(assembly(mas))
