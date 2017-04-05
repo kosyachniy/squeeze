@@ -5,12 +5,14 @@ from attachment import attachment
 from additionally import additionally
 from literacy import literacy
 
+opensigns='(<\[\{'
+
 def assembly(mas):
 	text=''
 	t=False
 	for i in mas:
 		for j in i.word:
-			if (j['change'] in '([{<') and t:
+			if (j['change'] in opensigns) and t:
 				text+=' '
 				t=False
 			elif (j['speech']!='sign') and t:
@@ -22,7 +24,10 @@ def assembly(mas):
 
 mas=parse(input())
 #type=style(mas)
-mas=literacy(additionally(attachment(excess(mas))))
+mas=excess(mas)
+mas=attachment(mas)
+mas=additionally(mas)
+mas=literacy(mas)
 
 print()
 for i in mas:
