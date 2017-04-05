@@ -72,13 +72,19 @@ def parse(str):
 			self.number=number
 	num=0
 	mas=[sentence()]
+	t=False
 	for i in range(len(text)):
 		if text[i].speech!='sign':
 			mas[num].count+=1
 		mas[num].word.append({'original':text[i].cont,'change':text[i].cont,'numsp':num+1,'speech':text[i].speech,'sentence':text[i].sentence,'case':text[i].case,'number':text[i].number,'gender':text[i].gender,'language':text[i].language})
-		if any(c in endsigns for c in text[i].cont) and (i!=len(text)-1) and (text[i+1].cont not in closesigns):
-			num+=1
-			mas.append(sentence(num+1))
+		if (any(c in endsigns for c in text[i].cont) or t or (text[i+1].cont in opensigns)) and (i!=len(text)-1):
+			if text[i+1].cont in closesigns:
+				t=True
+			else:
+				t=False
+				num+=1
+				mas.append(sentence(num+1))
+
 
 #Определение членов предложения (ЗАМЕНИТЬ НЕЙРОНКОЙ)
 	for i in mas:
