@@ -5,7 +5,7 @@ from attachment import attachment
 from additionally import additionally
 from literacy import literacy
 
-opensigns='(<\[\{'
+opensigns='(<\[\{'+'«'
 
 def assembly(mas):
 	text=''
@@ -29,11 +29,11 @@ mas=attachment(mas)
 mas=additionally(mas)
 mas=literacy(mas)
 
-print()
+print('\n')
 for i in mas:
 	print(i.number,end=' ')
 	for j in i.word:
 		print(j['original'],'(',j['speech'],'-',j['sentence'],')',end=' ')
-	print()
-print()
+	print('\n')
+print('\n')
 print(assembly(mas))

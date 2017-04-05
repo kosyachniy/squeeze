@@ -1,8 +1,8 @@
 #Проверяет грамотность, логичность, связанность -> корректирует
 
-#priority=['-',':','?','!','.',',']
-norepeat=','
-endsigns='.!?'
+#priority=['-',':','?','!','.',','] Для замены, если стоят подряд
+norepeat=',«»'
+casesigns='.!?«'
 closesigns=')>\]\}'
 
 def literacy(text):
@@ -24,9 +24,8 @@ def literacy(text):
 #Заглавные буквы, регистр
 			if f and word:
 				word=word[0].upper()+word[1:]
-				print(word)
 				f=False
-			if any(c in endsigns for c in word):
+			if any(c in casesigns for c in word):
 				f=True
 
 #Проверка глубины предложений
