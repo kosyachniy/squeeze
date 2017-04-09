@@ -21,8 +21,8 @@ def convert(item):
 def morph(text):
 #from pymongo import MongoClient
 #	MongoDB
-	p=(m.parse(text)[0]).tag
-	return convert(p.POS),convert(p.gender),convert(p.case),convert(p.number)
+	p=m.parse(text)[0]
+	return convert(p.normal_form),convert(p.tag.POS),convert(p.tag.gender),convert(p.tag.case),convert(p.tag.number)
 #	print(p)
 #import subprocess
 #import os
@@ -36,8 +36,9 @@ def parse(str):
 #Разбиение текста на слова
 	str=sub(r'(['+allsigns+'])',r' \1 ',str).split()
 	class word:
-		def __init__(self,cont='',speech='',gender='',case='',number='',language=''):
+		def __init__(self,cont='',inf='',speech='',gender='',case='',number='',language=''):
 			self.cont=cont
+			self.inf=inf
 			self.speech=speech
 			self.sentence=''
 			self.case=case
@@ -52,16 +53,16 @@ def parse(str):
 			if t:
 				text[len(text)-1].cont+=i
 			else:
-				text.append(word(i,'sign'))
+				text.append(word(i,i,'sign'))
 				t=True
 		else:
 			if i in allsigns:
-				text.append(word(i,'sign'))
+				text.append(word(i,i,'sign'))
 			elif any(c in '0123456789' for c in i):
-				text.append(word(i,'numb'))
+				text.append(word(i,i,'numb'))
 #Определение граммем (части речи, падежа, рода, числа, ...)
 			else:
-				text.append(word(i,morph(i)[0],morph(i)[1],morph(i)[2],morph(i)[3])) #,detect(i)
+				text.append(word(i,morph(i)[0],morph(i)[1],morph(i)[2],morph(i)[3],morph(i)[4])) #,detect(i)
 			t=False
 
 #Объединение слов в предложения
@@ -79,7 +80,7 @@ def parse(str):
 			mas[num].count+=1
 		if text[i].cont in opensigns:
 			deep+=1
-		mas[num].word.append({'original':text[i].cont,'change':text[i].cont.lower(),'numsp':num+1,'speech':text[i].speech,'sentence':text[i].sentence,'case':text[i].case,'number':text[i].number,'gender':text[i].gender,'language':text[i].language,'deep':deep})
+		mas[num].word.append({'original':text[i].cont,'infinitive':text[i].inf.lower(),'change':text[i].cont.lower(),'numsp':num+1,'speech':text[i].speech,'sentence':text[i].sentence,'case':text[i].case,'number':text[i].number,'gender':text[i].gender,'language':text[i].language,'deep':deep})
 		if text[i].cont in closesigns:
 			deep-=1
 		if (i!=len(text)-1) and (any(c in endsigns for c in text[i].cont) or t or (text[i+1].cont in opensigns)):
