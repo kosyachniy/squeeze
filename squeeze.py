@@ -1,8 +1,8 @@
 from parse import parse
-from style import style
-from excess import excess
-from attachment import attachment
-from additionally import additionally
+#from style import style
+#from excess import excess
+#from attachment import attachment
+#from additionally import additionally
 from literacy import literacy
 
 opensigns='(<\[\{'+'«'
@@ -24,9 +24,9 @@ def assembly(mas):
 
 mas=parse(input())
 #type=style(mas)
-mas=excess(mas)
-mas=attachment(mas)
-mas=additionally(mas)
+#mas=excess(mas)
+#mas=attachment(mas)
+#mas=additionally(mas)
 mas=literacy(mas)
 
 print('\n')
