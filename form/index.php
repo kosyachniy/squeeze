@@ -1,9 +1,7 @@
 <?php
 include('func.php');
 $db=db();
-$time=date('d.m.Y H:i:s');
-$user=$_SERVER['REMOTE_ADDR'];
-mysqli_query($db,"INSERT INTO `act`(`user`,`time`) VALUES ('$user','$time');");
+act('');
 ?>
 <style>
 	html, body {margin: 0; padding: 0;}
