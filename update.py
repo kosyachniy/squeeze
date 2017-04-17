@@ -7,6 +7,8 @@ if sys.version_info[0]>=3:
 else:
 	from urllib import urlretrieve, urlopen
 
+adr='http://zodzu.com/'
+
 def internet():
 	try:
 		socket.gethostbyaddr('www.yandex.ru')
@@ -15,8 +17,8 @@ def internet():
 	return True
 
 def download():
-	urlretrieve('http://zodzu.com/input.txt','db/input.txt')
-	urlretrieve('http://zodzu.com/output.txt','db/output.txt')
+	urlretrieve(adr+'input.txt','db/input.txt')
+	urlretrieve(adr+'output.txt','db/output.txt')
 
 def text(x):
 	y=[]
@@ -26,7 +28,7 @@ def text(x):
 				y.append(j['infinitive'])
 	return y
 
-if internet() and urlopen('http://zodzu.com/input.txt') and urlopen('http://zodzu.com/output.txt'):
+if internet() and urlopen(adr+'input.txt') and urlopen(adr+'output.txt'):
 	download()
 m=['input','output']
 for i in m:
