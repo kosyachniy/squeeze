@@ -1,0 +1,5 @@
+pymongo==3.4.0
+pymorphy2==0.8
+pymorphy2-dicts==2.4.393442.3710985
+pymorphy2-dicts-uk==2.4.1.1.1460299261
+pyparsing==2.2.0
