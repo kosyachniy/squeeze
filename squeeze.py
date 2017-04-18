@@ -3,7 +3,9 @@ from parse import parse
 #from excess import excess
 #from attachment import attachment
 #from additionally import additionally
+from treatment import treatment
 from literacy import literacy
+#from add import add
 
 opensigns='(<\[\{'+'«'
 
@@ -27,7 +29,9 @@ mas=parse(input())
 #mas=excess(mas)
 #mas=attachment(mas)
 #mas=additionally(mas)
+mas=treatment(mas)
 mas=literacy(mas)
+#arr=add(mas)
 
 print('\n')
 for i in mas:

@@ -18,6 +18,6 @@ function act($cont)
 
 function text($cont)
 	{
-	return preg_replace("/\s{2,}/",' ',preg_replace('/[\r\n]{1,}/s',' ',$cont))
+	return htmlspecialchars(preg_replace("/\s{2,}/",' ',preg_replace('/[\r\n]{1,}/s',' ',$cont)),ENT_QUOTES);
 	}
 ?>

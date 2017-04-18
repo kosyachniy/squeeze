@@ -7,7 +7,7 @@ from re import sub
 endsigns='.!?'
 opensigns='(<\[\{'
 closesigns=')>\]\}'
-signs=endsigns+'\'":&*—+-=`'
+signs=endsigns+'\'":&*—+\-=`'
 allsigns=signs+opensigns+closesigns+',;\\|/–«»'
 m=MorphAnalyzer()
 #m=MorphAnalyzer(lang='uk')
